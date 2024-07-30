@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Robux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('robux.webp');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #container {
+            max-height: 285px;
+            height: 90%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 650px;
+            width: 90%;
+            transition: transform 0.3s ease-in-out;
+        }
+        #container:hover {
+            transform: scale(1.3);
+        }
+        h1 {
+            font-size: 1.5em;
+            color: red;
+            margin-bottom: 20px;
+        }
+        label {
+            color: red;
+            font-size: 1em;
+        }
+        input[type="radio"] {
+            transform: scale(1.5);
+            margin: 10px;
+        }
+        input[type="text"] {
+            font-size: 1em;
+            padding: 10px;
+            margin: 20px 0;
+            width: calc(100% - 22px);
+        }
+        button {
+            background-color: green;
+            color: white;
+            font-size: 2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="bomb">How much robux would you like?</h1>
+        <section id="section">
+            <input type="radio" id="robux1000" name="card" />
+            <label for="robux1000">1k robux</label>
+            <input type="radio" id="robux5000" name="card" />
+            <label for="robux5000">5k robux</label>
+            <input type="radio" id="robux10000" name="card" />
+            <label for="robux10000">10k robux</label>
+            <br><br>
+            <input type="text" id="input" placeholder="Enter username here" />
+            <br><br>
+            <button id="button">GET ROBUX!!</button>
+        </section>
+    </div>
+    <script>
+        let previouslySelectedRadio = null;
+
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('click', function(event) {
+                if (previouslySelectedRadio === event.target) {
+                    event.target.checked = false;
+                    previouslySelectedRadio = null;
+                } else {
+                    previouslySelectedRadio = event.target;
+                }
+            });
+        });
+
+        document.getElementById("button").onclick = function() {
+            let robux1k = document.getElementById("robux1000");
+            let robux5k = document.getElementById("robux5000");
+            let robux10k = document.getElementById("robux10000");
+            let bomb = document.getElementById("bomb");
+            let section = document.getElementById("section");
+            let username = document.getElementById("input").value.trim();
+
+            if (username.length === 0) {
+                bomb.textContent = "PLEASE ENTER A USERNAME";
+            } else if (robux1k.checked) {
+                bomb.textContent = "YOU REALLY THINK YOU ARE GETTING 1K ROBUX?? LOL";
+            } else if (robux5k.checked) {
+                bomb.textContent = "YOU REALLY THINK YOU ARE GETTING 5K ROBUX?? LOL";
+            } else if (robux10k.checked) {
+                bomb.textContent = "YOU REALLY THINK YOU ARE GETTING 10K ROBUX?? LOL";
+            } else {
+                bomb.textContent = "YOU DIDN'T EVEN CHOOSE AN OPTION! EVEN IF YOU DID YOU WOULDN'T HAVE GOTTEN ANYTHING";
+            }
+            section.innerHTML = "";
+        }
+    </script>
+</body>
+</html>
